@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VAIBHAV — Welcome to Vaibhav's World</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="bg" id="bg1"></div><div class="bg" id="bg2"></div><canvas id="rain"></canvas>
+
+<section id="welcome"><div class="wc">
+  <h1>VAIBHAV</h1><h2>Welcome to Vaibhav's World.</h2>
+  <p>A little world of intelligence, curiosity and calm.</p>
+  <button id="enter">Enter My World</button>
+  <button id="wSound" class="ghost">🔊 Sound on</button>
+</div></section>
+
+<div id="app" hidden>
+  <header><div class="brand">🌿 VAIBHAV<span class="st"><i></i>Online</span></div>
+    <div class="hb"><button id="newChat">＋ New chat</button><button id="mute" title="Sound on/off">🔊</button><button id="gear" title="Settings">⚙</button></div></header>
+  <main id="chat" aria-live="polite"></main>
+  <div id="prompts"></div>
+  <form id="form"><textarea id="inp" rows="1" maxlength="8000" placeholder="Message Vaibhav…  (Enter to send, Shift+Enter for a new line)"></textarea>
+    <button type="button" id="stop" hidden>■ Stop</button><button id="send">Send</button></form>
+  <aside id="drawer" hidden>
+    <div class="row"><h3>Settings</h3><button id="close" class="ghost">✕</button></div>
+    <label for="key">Groq API key</label>
+    <div class="row"><input type="password" id="key" placeholder="gsk_… (optional if set in .env)" autocomplete="off" spellcheck="false"><button type="button" id="keySave" class="ghost">Save</button></div>
+    <small>Saved only in this browser and sent to your own server with each request. <a href="#" id="keyClear">Remove saved key</a></small><small id="keyMsg"></small>
+    <label for="model">Model</label><select id="model"></select>
+    <label for="temp">Temperature: <b id="tv">0.7</b></label><input type="range" id="temp" min="0" max="2" step="0.1">
+    <small>Lower = more predictable answers. Higher = more creative and varied.</small>
+    <label for="tok">Maximum completion tokens</label><input type="number" id="tok" min="1" step="1">
+    <small>Caps the length of each reply. <span id="kmax"></span></small>
+    <label class="chk"><input type="checkbox" id="web"> Web search</label>
+    <small>Lets Vaibhav look up current information online. While on, replies come from Groq's Compound system and the model selector is paused. Groq may charge a small fee per search.</small>
+    <label for="sys">System instructions</label><textarea id="sys" rows="6"></textarea>
+    <label for="vol">Rain volume</label><input type="range" id="vol" min="0" max="1" step="0.05">
+    <small id="sndNote" hidden>Using built-in synthesized rain. Add public/audio/rain-thunder.mp3 to use the real recording.</small>
+    <p><button id="reset" class="ghost">Reset to defaults</button></p>
+  </aside>
+</div>
+<audio id="aud" src="audio/rain-thunder.mp3" loop preload="none"></audio>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="app.js"></script></body></html>
